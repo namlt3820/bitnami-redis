@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+  permission-adapter:
+    image: 'docker.io/bitnami/minideb'
+    command: bash -c "chown -R 1001 /redis_data && chmod -R 777 /redis_data"
+    volumes:
+      - './redis_data:/redis_data'
+  redis:
+    image: docker.io/bitnami/redis:6.2
+    environment:
+      - "REDIS_PASSWORD=${REDIS_PASSWORD}"
+    ports:
+      - "${REDIS_PORT}:${REDIS_PORT}"
+    volumes:
+      - "./redis_data:/bitnami/redis/data"
+    depends_on:
+      - permission-adapter
