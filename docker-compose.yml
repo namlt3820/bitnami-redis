@@ -9,6 +9,7 @@ services:
   redis:
     image: docker.io/bitnami/redis:6.2
     container_name: bitnami-redis
+    restart: always
     environment:
       - "REDIS_PASSWORD=${REDIS_PASSWORD}"
       - "REDIS_PORT_NUMBER=${REDIS_PORT}"
