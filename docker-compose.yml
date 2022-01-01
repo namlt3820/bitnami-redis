@@ -11,6 +11,7 @@ services:
     container_name: bitnami-redis
     environment:
       - "REDIS_PASSWORD=${REDIS_PASSWORD}"
+      - "REDIS_PORT_NUMBER=${REDIS_PORT}"
     ports:
       - "${REDIS_PORT}:${REDIS_PORT}"
     volumes:
